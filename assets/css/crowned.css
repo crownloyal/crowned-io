@@ -22,5 +22,14 @@ aside.side-navigation {
 }
 section.content.page-content {
     margin-left: 20%;
-    max-width: 80%;
+    width: 80%;
+}
+@media(max-width: 700px) {
+    aside.side-navigation {
+        max-width: 100%;
+    }
+    section.content.page-content {
+        margin-left: 0;
+        width: 100%;
+    }
 }
