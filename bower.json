@@ -22,10 +22,10 @@
     "tests"
   ],
   "dependencies": {
-    "aquarelle": "*",
     "skeleton-framework": "^1.1.1"
   },
   "devDependencies": {
-    "normalize-css": "normalize.css#^5.0.0"
+    "normalize-css": "normalize.css#^5.0.0",
+    "particles.js": "^2.0.0"
   }
 }
