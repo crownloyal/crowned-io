@@ -1,0 +1,18 @@
+{
+  "name": "skeleton-framework",
+  "description": "A simple responsive framework for mobile friendly development.",
+  "main": "dist/skeleton.css",
+  "authors": "Gary DeLaney <gld1982ltd@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "css",
+    "framework",
+    "skeleton",
+    "skeleton-framework"
+  ],
+  "homepage": "https://github.com/skeleton-framework/skeleton-framework",
+  "ignore": [
+    "*",
+    "!dist/*"
+  ]
+}
