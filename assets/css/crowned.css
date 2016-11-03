@@ -1,2 +1,26 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css');
+
+aside {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+
+    background-color: #FFF;
+    box-shadow: 0 3px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.page-content {
+    background-color: #313131;
+    height: 100%;
+}
+
+/* Responsive hooks */
+aside.side-navigation {
+    max-width: 20%;
+}
+section.content.page-content {
+    margin-left: 20%;
+    max-width: 80%;
+}
