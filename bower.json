@@ -1,0 +1,31 @@
+{
+  "name": "crowned-io",
+  "homepage": "https://crowned.io",
+  "authors": [
+    "Dominic M Brause <dom.brause@gmail.com>"
+  ],
+  "description": "This powers https://crowned.io",
+  "main": "index.html",
+  "keywords": [
+    "blog",
+    "personal",
+    "programmer",
+    "code"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "aquarelle": "*",
+    "skeleton-framework": "^1.1.1"
+  },
+  "devDependencies": {
+    "normalize-css": "normalize.css#^5.0.0"
+  }
+}

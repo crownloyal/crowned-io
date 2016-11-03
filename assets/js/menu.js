@@ -20,6 +20,7 @@ class sideNavigation {
         this.tochStartPositionX = 0;
     }
     _trackTouch(event) {
+        let drag = event.DragEvent.screenX;
         this.tochStartPositionX =+ drag;
     }
 
