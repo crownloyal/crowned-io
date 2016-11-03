@@ -1,6 +1,7 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css');
 
+/* Side nav */
 aside {
     position: fixed;
     left: 0;
@@ -9,11 +10,22 @@ aside {
 
     background-color: #FFF;
     box-shadow: 0 3px 5px 5px rgba(0, 0, 0, 0.5);
+    padding: 2em 1em;
+}
+aside .nav-title {
+    height: 25%;
 }
 
-.page-content {
+/* Page content */
+.content {
     background-color: #313131;
     height: 100%;
+    padding: 2em 1em;
+}
+
+/* Typography */
+.content {
+    color: #FFF;
 }
 
 /* Responsive hooks */
