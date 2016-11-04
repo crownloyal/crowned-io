@@ -87,7 +87,7 @@ section.content.page-content {
         transition: translateX 0.2s ease-in-out;
         transition: opacity 0.2s ease-in-out;
     }
-    aside.side-navigation > .content.page-content {
+    aside.side-navigation + .content.page-content {
         opacity: 0;
     }
 
