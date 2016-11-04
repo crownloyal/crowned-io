@@ -1,9 +1,14 @@
 /*
-CDN
-
-@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css');
-*/
+ * BLACK: #313131
+ * CYAN: #66d9e8
+ * 
+ * 
+ * CDN
+ * 
+ * @import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css');
+ * @import url('https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css');
+ * 
+ */
 
 body {
     overflow: hidden;
@@ -29,6 +34,7 @@ aside .nav-title {
 aside img#linkedin-profile {
     border-radius: 50%;
     width: 50%;
+    border: 3px solid #66d9e8;
 }
 aside nav > ul {
     list-style: none;
@@ -60,6 +66,9 @@ aside.side-navigation {
 }
 .content {
     color: #FFF;
+}
+h1, h2, h3, h4, h5, h6, a {
+    color: #66d9e8;
 }
 
 
