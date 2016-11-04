@@ -5,11 +5,16 @@ CDN
 @import url('https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css');
 */
 
+body {
+    overflow: hidden;
+}
+
 /* Side nav */
 aside {
     position: fixed;
     left: 0;
     top: 0;
+    z-index: 3;
     height: 100%;
 
     background-color: #FFF;
@@ -35,10 +40,18 @@ aside nav > ul li {
 }
 
 /* Page content */
-.content {
+#background-particlesjs {
+    position: relative;
+    z-index: 1;
     background-color: #313131;
+}
+.content {
     height: 100%;
     padding: 2em 1em;
+
+    position: absolute;
+    top: 0;
+    z-index: 2;
 }
 
 /* Typography */
@@ -57,7 +70,7 @@ aside.side-navigation {
 }
 section.content.page-content {
     margin-left: 300px;
-    width: 80%;
+    width: 100%;
 }
 @media(max-width: 680px) {
     aside.side-navigation {
