@@ -2,7 +2,6 @@
  * BLACK: #313131
  * CYAN: #66d9e8
  * 
- * 
  * CDN
  * 
  * @import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css');
@@ -57,6 +56,13 @@ aside nav > ul li {
     position: absolute;
     top: 0;
     z-index: 2;
+}
+.content .media-icon {
+    float: left;
+    padding: 0 2em;
+}
+.content .media-icon i {
+    font-size: 3em;
 }
 
 /* Typography */
