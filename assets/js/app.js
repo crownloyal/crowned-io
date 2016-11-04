@@ -1,0 +1,1 @@
+particlesJS.load('background-particlesjs', 'assets/js/particlesjs-config.json', () => console.log('Particles initiated.') );

@@ -22,9 +22,7 @@
     "tests"
   ],
   "dependencies": {
-    "skeleton-framework": "^1.1.1"
-  },
-  "devDependencies": {
+    "skeleton-framework": "^1.1.1",
     "normalize-css": "normalize.css#^5.0.0",
     "particles.js": "^2.0.0"
   }

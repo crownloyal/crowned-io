@@ -1,7 +1,6 @@
 class sideNavigation {
 
     constructor() {
-        console.log('Im a nav!');
         this._bindings();
         this._functionBindings();
     }
@@ -9,7 +8,7 @@ class sideNavigation {
     _bindings() {
         this.navigationContainer = document.querySelector('aside.side-navigation');
         this.navigationContainer = this.navigationContainer.addEventListener('mouseDown', this._initiateTouch);
-        this.navigationContainer = this.navigationContainer.addEventListener('dragstart', this._trackTouch);
+        //this.navigationContainer = this.navigationContainer.addEventListener('dragstart', this._trackTouch);
     }
     _functionBindings() {
         this._initiateTouch = this._initiateTouch.bind(this);

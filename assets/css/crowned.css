@@ -1,5 +1,6 @@
 /*
 CDN
+
 @import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css');
 */
@@ -14,9 +15,23 @@ aside {
     background-color: #FFF;
     box-shadow: 0 3px 5px 5px rgba(0, 0, 0, 0.5);
     padding: 2em 1em;
+
+    overflow: hidden;
 }
 aside .nav-title {
-    height: 25%;
+    min-height: 25%;
+}
+aside img#linkedin-profile {
+    border-radius: 50%;
+    width: 50%;
+}
+aside nav > ul {
+    list-style: none;
+}
+aside nav > ul li {
+    height: 2em;
+    line-height: 2em;
+    padding: 2em 1em;
 }
 
 /* Page content */
@@ -27,22 +42,43 @@ aside .nav-title {
 }
 
 /* Typography */
+aside.side-navigation {
+    text-align: center;
+}
 .content {
     color: #FFF;
 }
 
+
 /* Responsive hooks */
 aside.side-navigation {
-    max-width: 20%;
+    width: 90%;
+    max-width: 300px;
 }
 section.content.page-content {
-    margin-left: 20%;
+    margin-left: 300px;
     width: 80%;
 }
-@media(max-width: 700px) {
+@media(max-width: 680px) {
     aside.side-navigation {
-        max-width: 100%;
+        transform: translateX(0);
+
+        transition: translateX 0.2s ease-in-out;
+        transition: opacity 0.2s ease-in-out;
     }
+    aside.side-navigation > .content.page-content {
+        opacity: 0;
+    }
+
+
+    aside.side-navigation.navigation-closed {
+        transform: translateX(-102%);
+        opacity: 0;
+    }
+        aside.side-navigation.navigation-closed > .content.page-content {
+        opacity: 1;
+    }
+
     section.content.page-content {
         margin-left: 0;
         width: 100%;
