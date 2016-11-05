@@ -9,11 +9,24 @@
  * 
  */
 
-body {
+html, body {
     overflow: hidden;
 }
 
 /* Side nav */
+aside.side-navigation::before {
+    content: ' ';
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+
+    background-color: rgba(255, 255, 255, 0.4);
+
+    filter: blur(0.5px);
+}
 aside.side-navigation {
     position: fixed;
     left: 0;
@@ -21,14 +34,15 @@ aside.side-navigation {
     z-index: 3;
     height: 100%;
     padding: 2em 2em;
-
-    background-color: rgba(255, 255, 255, 0.5);
-    box-shadow: 0 3px 5px 5px rgba(0, 0, 0, 0.2);
-
     overflow: hidden;
+
+    box-shadow: 0 3px 5px 5px rgba(0, 0, 0, 0.2);
 }
+
+
+
 aside .nav-title {
-    min-height: 25%;
+    min-height: 20%;
 }
 aside img#linkedin-profile {
     border-radius: 50%;
@@ -51,29 +65,37 @@ aside nav > ul li {
 }
 .content {
     height: 100%;
+    width: calc(100%-21%);
     padding: 2em 1em;
 
     position: absolute;
     top: 0;
     z-index: 2;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .content .media-icon {
     float: left;
     padding: 0 2em;
+}
+.content .media-icon:first-child {
+    padding-left: 0;
 }
 .content .media-icon i {
     font-size: 3em;
 }
 
 /* Typography */
-aside.side-navigation .nav-title {
-    text-align: center;
-}
-.content {
+html, body {
     color: #FFF;
 }
 h1, h2, h3, h4, h5, h6, a {
     color: #66d9e8;
+}
+aside.side-navigation .nav-title {
+    text-align: center;
 }
 
 
@@ -88,6 +110,31 @@ section.content.page-content {
 }
 @media(max-width: 680px) {
     aside.side-navigation {
+        transform: translateX(0);
+
+        transition: translateX 0.2s ease-in-out;
+        transition: opacity 0.2s ease-in-out;
+    }
+    aside.side-navigation + .content.page-content {
+        opacity: 0;
+    }
+
+    aside.side-navigation.navigation-closed {
+        transform: translateX(-102%);
+        opacity: 0;
+    }
+    aside.side-navigation.navigation-closed > .content.page-content {
+        opacity: 1;
+    }
+
+    section.content.page-content {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+@media(max-width: 420px) {
+    aside.side-navigation {
+        padding: 0;
         transform: translateX(0);
 
         transition: translateX 0.2s ease-in-out;
