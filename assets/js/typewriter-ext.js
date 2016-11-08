@@ -20,14 +20,20 @@ class Typewriter {
       element: document.querySelector(element) || element,
       text: optin.text,
       words: optin.words || false,
-      cursor: optin.cursor || false,
       interval: optin.interval || 'human',
       lowerBound: optin.lowerBound || 30,
-      upperBound: optin.upperBound || 200
-     }
+      upperBound: optin.upperBound || 200,
+      cursor:{ 
+        state: optin.cursor.state || false,
+        style: optin.cursor.style || '|',
+        interval: optin.cursor.interval || 500
+      }
+    }
+
+     this._setUpCursor();
   }
-     
-  randomIntFromInterval(min, max) {
+
+  _randomIntFromInterval(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
@@ -35,13 +41,33 @@ class Typewriter {
     return !isNaN(parseFloat(number)) && isFinite(number);
   }
 
-  getIntervalSpeed() {
+  _getIntervalSpeed() {
     if (this._isNumber(this.options.interval)) { 
         return this.options.interval; 
     } else {
-        return randomIntFromInterval(this.options.lowerBound, this.options.upperBound);
+        return _randomIntFromInterval(this.options.lowerBound, this.options.upperBound);
     }
   }
+
+  _setUpCursor() {
+    if(this.options.cursor.state) {
+      this.options.element.innerHTML += '<span id="typewriter-cursor">' + this.options.cursor.style + '</span>';
+      const cursorElement = document.querySelector('#typewriter-cursor');
+
+      let show = (element) => {
+        element.style.visibility = "visible";
+      }
+      let hide = (element) => {
+        element.style.visibility = "hidden";
+      }
+
+      let blinking = window.setInterval(() => {
+        hide(cursorElement);
+        show(cursorElement);
+        }, this.options.cursor.interval)
+      
+      }
+    } 
 
   typeByLettersConstantInterval(callback) {
     let numberOfLetters = this.options.text.length,
@@ -53,10 +79,10 @@ class Typewriter {
 
         callback && callback.call(window);
       } else {
-        this.options.element.innerHTML += this.options.text[currentPosition];
+        this.options.element.textContent += this.options.text[currentPosition];
         currentPosition++;
       }
-    }, this.getIntervalSpeed());
+    }, this._getIntervalSpeed());
   }
 
   typeByLettersRandomisedInterval(callback) {
@@ -69,10 +95,10 @@ class Typewriter {
   repeat(numberOfLetters, currentPosition, callback) {
     if (numberOfLetters === 0) return callback && callback.call(window);
 
-    let interval = this.getIntervalSpeed.call(),
+    let interval = this._getIntervalSpeed.call(),
         timer;
 
-    this.options.element.innerHTML += this.options.text[currentPosition];
+    this.options.element.textContent += this.options.text[currentPosition];
 
     timer = setTimeout(() => {
       numberOfLetters--; currentPosition++;
@@ -91,10 +117,10 @@ class Typewriter {
 
         callback && callback.call(window);
       } else {
-        this.options.element.innerHTML += (words[currentPosition] + ' ');
+        this.options.element.textContent += (words[currentPosition] + ' ');
         currentPosition++;
       }
-    }, this.getIntervalSpeed());
+    }, this._getIntervalSpeed());
   }
 
   type(callback) {
@@ -102,14 +128,21 @@ class Typewriter {
     this._isNumber(this.options.interval) ? this.typeByLettersConstantInterval(callback) : this.typeByLettersRandomisedInterval(callback);
   }
 
-  rollBacktype(currentWord) {
-      // TODO: roll back current word
+  typeLooped(currentWord) {
+    window.setInterval(() => {
+      for(var i = 0; i < this.options.text.length; i++) {
+
+      }
+    }, _getIntervalSpeed())
   }
 }
 
-let typer = new Typewriter('#be-friendly',{
+let typer = new Typewriter('#be-friendly', {
     interval: 100,
-    text: 'Hello there!'
+    text: 'Hello there!',
+    cursor: {
+      state: true
+    }
 })
 
 typer.type();
