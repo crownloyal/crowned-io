@@ -61,7 +61,7 @@ class Typewriter {
         element.style.visibility = "hidden";
       }
 
-      let blinking = window.setInterval(() => {
+      window.setInterval(() => {
         hide(cursorElement);
         show(cursorElement);
         }, this.options.cursor.interval)
@@ -128,6 +128,14 @@ class Typewriter {
     this._isNumber(this.options.interval) ? this.typeByLettersConstantInterval(callback) : this.typeByLettersRandomisedInterval(callback);
   }
 
+  removeWord(callback) {
+    let currentWord = this.options.element.textContent,
+        pointer = 0;
+
+    console.log(currentWord);
+    this.repeat(currentWord.length, pointer, callback);
+  }
+
   typeLooped(currentWord) {
     window.setInterval(() => {
       for(var i = 0; i < this.options.text.length; i++) {
@@ -145,4 +153,5 @@ let typer = new Typewriter('#be-friendly', {
     }
 })
 
+typer.removeWord();
 typer.type();
