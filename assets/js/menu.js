@@ -1,6 +1,12 @@
 class sideNavigation {
 
     constructor() {
+
+        this.state = {
+            isClosed : false,
+            hidesContent: true
+        }
+
         this._bindings();
         this._functionBindings();
     }

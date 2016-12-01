@@ -1,6 +1,7 @@
 /*
  * BLACK: #313131
  * CYAN: #66d9e8
+ * DARK BLUE: #0FA0CE
  * 
  * CDN
  * 
@@ -95,6 +96,19 @@ html, body {
 h1, h2, h3, h4, h5, h6, a {
     color: #66d9e8;
 }
+a:hover {
+    color: #66d9e8;
+    text-decoration: underline;
+    transition: color 0.3s ease-in-out;
+} 
+.social-media a {
+    color: #FFF;
+    transition: color 0.3s ease-in-out;
+}
+.social-media a:hover {
+    color: #66d9e8
+}
+
 aside.side-navigation .nav-title {
     text-align: center;
 }

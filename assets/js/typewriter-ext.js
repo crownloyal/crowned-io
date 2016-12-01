@@ -23,9 +23,10 @@ class Typewriter {
       words: optin.words || false,
       interval: optin.interval || 'human',
       lowerBound: optin.lowerBound || 30,
-      upperBound: optin.upperBound || 200,
+      upperBound: optin.upperBound || 250,
       cursor:{ 
         state: optin.cursor.state || false,
+        element: document.querySelector(element + ' #typewriter-cursor'),
         style: optin.cursor.style || '|',
         interval: optin.cursor.interval || 500
       }
@@ -52,20 +53,16 @@ class Typewriter {
 
   _setUpCursor() {
     if(this.options.cursor.state) {
-      this.options.element.innerHTML += '<span id="typewriter-cursor">' + this.options.cursor.style + '</span>';
-      const cursorElement = document.querySelector('#typewriter-cursor');
+        this.options.cursor.element.textContent = this.options.cursor.style;
 
-      let show = (element) => {
-        element.style.visibility = "visible";
-      }
-      let hide = (element) => {
-        element.style.visibility = "hidden";
-      }
+        let show = (element) => {
+            element.style.visibility = "visible";
+        }
+        let hide = (element) => {
+            element.style.visibility = "hidden";
+        }
 
-      window.setInterval(() => {
-        hide(cursorElement);
-        show(cursorElement);
-        }, this.options.cursor.interval)
+        // TODO: Make it blink!
       
       }
     } 
