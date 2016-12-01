@@ -1,12 +1,13 @@
 /*
  * typewriter.js
- * An ES6 Port of the original typewriter.js
+ * A Promise-based ES6 port of the original typewriter.js
  *
  * Original Copyright 2014, Connor Atherton - http://connoratherton.com/
  * Released under the MIT Licence
  * http://opensource.org/licenses/MIT
  * 
  * Github:  http://github.com/ConnorAtherton/typewriter
+ *
  */
 'use strict';
 
@@ -133,15 +134,11 @@ class Typewriter {
         pointer = 0;
 
     console.log(currentWord);
-    this.repeat(currentWord.length, pointer, callback);
-  }
 
-  typeLooped(currentWord) {
     window.setInterval(() => {
-      for(var i = 0; i < this.options.text.length; i++) {
-
-      }
-    }, _getIntervalSpeed())
+      currentWord.slice(0, -1);
+    }, currentWord.length);
+    
   }
 }
 
