@@ -26,7 +26,7 @@ class Typewriter {
       upperBound: optin.upperBound || 250,
       cursor:{ 
         state: optin.cursor.state || false,
-        element: document.querySelector(element + ' #typewriter-cursor'),
+        element: document.querySelector('#typewriter-cursor'),
         style: optin.cursor.style || '|',
         interval: optin.cursor.interval || 500
       }
@@ -67,15 +67,13 @@ class Typewriter {
       }
     } 
 
-  typeByLettersConstantInterval(callback) {
+  typeByLettersConstantInterval() {
     let numberOfLetters = this.options.text.length,
         currentPosition = 0;
 
     let interval = window.setInterval(() => {
       if (currentPosition === numberOfLetters) {
         window.clearInterval(interval);
-
-        callback && callback.call(window);
       } else {
         this.options.element.textContent += this.options.text[currentPosition];
         currentPosition++;
@@ -83,15 +81,15 @@ class Typewriter {
     }, this._getIntervalSpeed());
   }
 
-  typeByLettersRandomisedInterval(callback) {
+  typeByLettersRandomisedInterval() {
     let numberOfLetters = this.options.text.length,
         currentPosition = 0;
 
-    this.repeat(numberOfLetters, currentPosition, callback);
+    this.repeat(numberOfLetters, currentPosition);
   }
 
-  repeat(numberOfLetters, currentPosition, callback) {
-    if (numberOfLetters === 0) return callback && callback.call(window);
+  repeat(numberOfLetters, currentPosition) {
+    if (numberOfLetters === 0) return false;
 
     let interval = this._getIntervalSpeed.call(),
         timer;
@@ -100,11 +98,11 @@ class Typewriter {
 
     timer = setTimeout(() => {
       numberOfLetters--; currentPosition++;
-      this.repeat(numberOfLetters, currentPosition, callback);
+      this.repeat(numberOfLetters, currentPosition);
     }, interval);
   }
 
-  typeByWords(callback) {
+  typeByWords() {
     let words = this.options.text.split(' '),
         numberOfWords = words.length,
         currentPosition = 0;
@@ -112,8 +110,6 @@ class Typewriter {
     let interval = window.setInterval(() => {
       if (currentPosition === numberOfWords) {
         window.clearInterval(interval);
-
-        callback && callback.call(window);
       } else {
         this.options.element.textContent += (words[currentPosition] + ' ');
         currentPosition++;
@@ -121,12 +117,12 @@ class Typewriter {
     }, this._getIntervalSpeed());
   }
 
-  type(callback) {
-    this.options.words ? typeByWords(callback) :
-    this._isNumber(this.options.interval) ? this.typeByLettersConstantInterval(callback) : this.typeByLettersRandomisedInterval(callback);
+  type() {
+    this.options.words ? typeByWords() :
+    this._isNumber(this.options.interval) ? this.typeByLettersConstantInterval() : this.typeByLettersRandomisedInterval();
   }
 
-  removeWord(callback) {
+  removeWord() {
     let currentWord = this.options.element.textContent,
         pointer = 0;
 
@@ -143,7 +139,8 @@ let typer = new Typewriter('#be-friendly', {
     interval: 100,
     text: 'Hello there!',
     cursor: {
-      state: true
+      state: true,
+      style: '_'
     }
 })
 
