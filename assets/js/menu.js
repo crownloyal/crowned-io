@@ -12,9 +12,9 @@ class sideNavigation {
     }
 
     _bindings() {
-        this.navigationContainer = document.querySelector('aside.side-navigation');
-        this.navigationContainer = this.navigationContainer.addEventListener('mouseDown', this._initiateTouch);
-        //this.navigationContainer = this.navigationContainer.addEventListener('dragstart', this._trackTouch);
+        this.navigationContainer = document.querySelector('.side-navigation');
+        this.navigationContainer.addEventListener('mouseDown', this._initiateTouch);
+        this.navigationContainer.addEventListener('dragstart', this._trackTouch);
     }
     _functionBindings() {
         this._initiateTouch = this._initiateTouch.bind(this);
