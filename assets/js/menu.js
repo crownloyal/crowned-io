@@ -6,10 +6,12 @@ class sideNavigation {
             isClosed : false
         }
 
-        this.navigationContainer = document.querySelector('aside.side-navigation');
+        this.navigationContainer = document.querySelector('.side-navigation');
 
         this._bindings();
         this._functionBindings();
+
+        console.info(this.navigationContainer);
     }
 
     _bindings() {
@@ -28,12 +30,24 @@ class sideNavigation {
         let drag = event.DragEvent.screenX;
         this.tochStartPositionX =+ drag;
     }
-    hideNavigation() {
-        console.info(navigationContainer);
-        this.state.isClosed = true;
-        //navigationContainer.className += '';
-    }
 
+    hideNavigation() {
+        this.state.isClosed = true;
+        this.propagateState();
+    }
+    openNavigation () {
+        this.state.isClosed = false;
+        this.propagateState();
+    }
+    propagateState() {
+        let currentClasses = navigationContainer.className.split(' ');
+
+        if(this.state.isClosed) {
+            navigationContainer.className = currentClasses + navigation-closed;
+        } else {
+            navigationContainer.className = currentClasses - navigation-closed;
+        }
+    }
 }
 
 let sidenav = new sideNavigation();
