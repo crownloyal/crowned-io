@@ -3,16 +3,16 @@ class sideNavigation {
     constructor() {
 
         this.state = {
-            isClosed : false,
-            hidesContent: true
+            isClosed : false
         }
+
+        this.navigationContainer = document.querySelector('aside.side-navigation');
 
         this._bindings();
         this._functionBindings();
     }
 
     _bindings() {
-        this.navigationContainer = document.querySelector('aside.side-navigation');
         this.navigationContainer = this.navigationContainer.addEventListener('mouseDown', this._initiateTouch);
         //this.navigationContainer = this.navigationContainer.addEventListener('dragstart', this._trackTouch);
     }
@@ -27,6 +27,11 @@ class sideNavigation {
     _trackTouch(event) {
         let drag = event.DragEvent.screenX;
         this.tochStartPositionX =+ drag;
+    }
+    hideNavigation() {
+        console.info(navigationContainer);
+        this.state.isClosed = true;
+        //navigationContainer.className += '';
     }
 
 }

@@ -167,4 +167,13 @@ section.content.page-content {
         margin-left: 0;
         width: 100%;
     }
+
+@media(max-width: 320px) {
+    aside.side-navigation {
+        padding: 0.5em;
+        transform: translateX(0);
+
+        transition: translateX 0.2s ease-in-out;
+        transition: opacity 0.2s ease-in-out;
+    }
 }
