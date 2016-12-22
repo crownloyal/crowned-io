@@ -10,13 +10,11 @@ class sideNavigation {
 
         this._bindings();
         this._functionBindings();
-
-        console.info(this.navigationContainer);
     }
 
     _bindings() {
-        this.navigationContainer = this.navigationContainer.addEventListener('mouseDown', this._initiateTouch);
-        //this.navigationContainer = this.navigationContainer.addEventListener('dragstart', this._trackTouch);
+        this.navigationContainer.addEventListener('mouseDown', this._initiateTouch);
+        this.navigationContainer.addEventListener('dragStart', this._trackTouch);
     }
     _functionBindings() {
         this._initiateTouch = this._initiateTouch.bind(this);
@@ -28,7 +26,7 @@ class sideNavigation {
     }
     _trackTouch(event) {
         let drag = event.DragEvent.screenX;
-        this.tochStartPositionX =+ drag;
+        this.tochStartPositionX += drag;
     }
 
     hideNavigation() {
