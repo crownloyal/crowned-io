@@ -44,7 +44,7 @@ aside.side-navigation {
 
 
 aside .nav-title {
-    min-height: 20%;
+    min-height: 20vh;
 }
 aside img#linkedin-profile {
     border-radius: 50%;
@@ -69,15 +69,11 @@ aside nav > ul li {
     height: 100%;
     width: calc(100%-21%);
     padding: 2em 1em;
+    padding-top: 25vh;
 
     position: absolute;
     top: 0;
     z-index: 2;
-
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
 }
 .content .media-icon {
     float: left;
@@ -150,7 +146,6 @@ section.content.page-content {
 }
 @media(max-width: 420px) {
     aside.side-navigation {
-        padding: 0;
         transform: translateX(0);
 
         transition: translateX 0.2s ease-in-out;
