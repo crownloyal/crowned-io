@@ -15,10 +15,12 @@ class sideNavigation {
     _bindings() {
         this.navigationContainer.addEventListener('mouseDown', this._initiateTouch);
         this.navigationContainer.addEventListener('dragStart', this._trackTouch);
+        this.navigationContainer.addEventListener('touchend', this._endTouch);
     }
     _functionBindings() {
         this._initiateTouch = this._initiateTouch.bind(this);
         this._trackTouch = this._trackTouch.bind(this);
+        this._endTouch = this._endTouch.bind(this);
     }
 
     _initiateTouch(event) {
@@ -26,14 +28,16 @@ class sideNavigation {
         this.tochStartPositionX = 0;
     }
     _trackTouch(event) {
-        if(!this.state.touchingNavigation === true) return;
+        if(!this.state.touchingNavigation) return;
 
         console.log(event);
         let drag = event.DragEvent.screenX;
         this.tochStartPositionX += drag;
     }
     _endTouch(event) {
-        this.
+        if(!this.state.touchingNavigation) return;
+
+        this.state.touchingNavigation = false;
     }
 
     hideNavigation() {
