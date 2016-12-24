@@ -1,12 +1,12 @@
 class sideNavigation {
 
     constructor() {
-
         this.state = {
-            isClosed : false
+            isClosed : false,
+            touchingNavigation: false
         }
 
-        this.navigationContainer = document.querySelector('.side-navigation');
+        this.navigationContainer = document.querySelector('aside.side-navigation');
 
         this._bindings();
         this._functionBindings();
@@ -22,11 +22,18 @@ class sideNavigation {
     }
 
     _initiateTouch(event) {
+        this.state.touchingNavigation = true;
         this.tochStartPositionX = 0;
     }
     _trackTouch(event) {
+        if(!this.state.touchingNavigation === true) return;
+
+        console.log(event);
         let drag = event.DragEvent.screenX;
         this.tochStartPositionX += drag;
+    }
+    _endTouch(event) {
+        this.
     }
 
     hideNavigation() {
@@ -41,9 +48,9 @@ class sideNavigation {
         let currentClasses = navigationContainer.className.split(' ');
 
         if(this.state.isClosed) {
-            navigationContainer.className = currentClasses + navigation-closed;
+            navigationContainer.classList.add('navigation-closed');
         } else {
-            navigationContainer.className = currentClasses - navigation-closed;
+            navigationContainer.classList.remove('navigation-closed');
         }
     }
 }
