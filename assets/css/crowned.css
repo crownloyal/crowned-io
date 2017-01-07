@@ -115,6 +115,8 @@ aside.side-navigation .nav-title {
 aside.side-navigation {
     width: 90%;
     max-width: 300px;
+        transition: translateX 0.2s ease-in-out;
+        transition: opacity 0.2s ease-in-out;
 }
 section.content.page-content {
     margin-left: 360px;
@@ -123,9 +125,6 @@ section.content.page-content {
 @media(max-width: 680px) {
     aside.side-navigation {
         transform: translateX(0);
-
-        transition: translateX 0.2s ease-in-out;
-        transition: opacity 0.2s ease-in-out;
     }
     aside.side-navigation + .content.page-content {
         opacity: 0;
@@ -147,9 +146,6 @@ section.content.page-content {
 @media(max-width: 420px) {
     aside.side-navigation {
         transform: translateX(0);
-
-        transition: translateX 0.2s ease-in-out;
-        transition: opacity 0.2s ease-in-out;
     }
     aside.side-navigation + .content.page-content {
         opacity: 0;
@@ -173,8 +169,5 @@ section.content.page-content {
     aside.side-navigation {
         padding: 0.5em;
         transform: translateX(0);
-
-        transition: translateX 0.2s ease-in-out;
-        transition: opacity 0.2s ease-in-out;
     }
 }
