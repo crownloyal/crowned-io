@@ -22,12 +22,12 @@ class sideNavigation {
         this._endTouch = this._endTouch.bind(this);
     }
 
-    _initiateTouch(event) {
+_initiateTouch(event) {
         if(this.isClosed) return;
 
         this.touchingNavigation = true;
-        this.touchStartPositionX = 0;
-        this.touchAnimatePositionX = this.touchStartPositionX;
+        this.touchStartPositionX = event.touches[0].pageX;
+        this.touchAnimatePositionX = 0;
 
         //requestAnimationFrame(this.updateMenuPosition);
     }
@@ -35,15 +35,17 @@ class sideNavigation {
         if(!this.touchingNavigation) return;
 
         this.touchAnimatePositionX = event.touches[0].pageX;
-        console.info(this.touchAnimatePositionX)
     }
     _endTouch(event) {
+        const toggleLimit = -50;
+
         if(!this.touchingNavigation) return;
 
         this.touchingNavigation = false;
-        let dragRatio = Math.min(0, this.touchAnimatePositionX - this.touchStartPositionX);
+        let dragDirection = Math.min(0, this.touchAnimatePositionX - this.touchStartPositionX);
+        console.info(dragDirection);
 
-        if (dragRatio < 0) {
+        if(dragDirection < toggleLimit) {
             this.hideNavigation();
         }
     }
@@ -66,9 +68,9 @@ class sideNavigation {
     }
     propagateState() {
         if(this.isClosed) {
-            navigationContainer.classList.add('navigation-closed');
+            this.navigationContainer.classList.add('navigation-closed');
         } else {
-            navigationContainer.classList.remove('navigation-closed');
+            this.navigationContainer.classList.remove('navigation-closed');
         }
     }
 }
