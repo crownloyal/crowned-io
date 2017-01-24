@@ -6,6 +6,7 @@ class sideNavigation {
         this._setup();
         this._bindings();
         this._functionBindings();
+        console.dir(this);
     }
     _setup() {
         this.isClosed = false;
@@ -35,7 +36,8 @@ class sideNavigation {
 
         this.touchAnimatePositionX = event.touches[0].pageX;
         const animateX = this.touchAnimatePositionX - this.touchStartPositionX;
-        this.navigationContainer.style.transform = `${animateX}`;
+        this.navigationContainer.style.transform = `translate ${animateX}`;
+        console.info('TODO: Debug "this".');
     }
     _endTouch(event) {
         const toggleLimit = -50;
@@ -43,8 +45,7 @@ class sideNavigation {
         if(!this.touchingNavigation) return;
 
         this.touchingNavigation = false;
-        let dragDirection = Math.min(0, this.touchAnimatePositionX - this.touchStartPositionX);
-        console.info(dragDirection);
+        let dragDirection = Math.min(0, this.touchStartPositionX - this.touchAnimatePositionX);
 
         if(dragDirection < toggleLimit) {
             this.hideNavigation();
