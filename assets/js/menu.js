@@ -36,8 +36,8 @@ class sideNavigation {
 
         this.touchAnimatePositionX = event.touches[0].pageX;
         const animateX = this.touchAnimatePositionX - this.touchStartPositionX;
-        this.navigationContainer.style.transform = `translate ${animateX}`;
         console.info('TODO: Debug "this".');
+        this.navigationContainer.style.transform = `translate ${animateX}`;
     }
     _endTouch(event) {
         const toggleLimit = -50;
