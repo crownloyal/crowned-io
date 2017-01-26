@@ -4,13 +4,15 @@ class sideNavigation {
         this.navigationContainer = document.querySelector('aside.side-navigation');
 
         this._setup();
-        this._bindings();
         this._functionBindings();
+        this._bindings();
         console.dir(this);
     }
     _setup() {
         this.isClosed = false;
         this.touchingNavigation = false;
+        this.touchStartPositionX = 0;
+        this.touchAnimatePositionX = 0;
     }
     _bindings() {
         this.navigationContainer.addEventListener('touchstart', this._initiateTouch);
@@ -28,19 +30,17 @@ class sideNavigation {
 
         this.touchingNavigation = true;
         this.touchStartPositionX = event.touches[0].pageX;
-        this.touchAnimatePositionX = 0;
-
     }
     _trackTouch(event) {
         if(!this.touchingNavigation) return;
 
+        requestAnimationFrame();
         this.touchAnimatePositionX = event.touches[0].pageX;
         const animateX = this.touchAnimatePositionX - this.touchStartPositionX;
-        console.info('TODO: Debug "this".');
         this.navigationContainer.style.transform = `translate ${animateX}`;
     }
     _endTouch(event) {
-        const toggleLimit = -50;
+        const toggleLimit = 60;
 
         if(!this.touchingNavigation) return;
 

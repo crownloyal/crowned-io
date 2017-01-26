@@ -155,7 +155,7 @@ section.content.page-content {
         transform: translateX(-102%);
         opacity: 0;
     }
-    aside.side-navigation.navigation-closed > .content.page-content {
+    aside.side-navigation.navigation-closed + .content.page-content {
         opacity: 1;
     }
 
