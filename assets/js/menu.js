@@ -9,10 +9,14 @@ class sideNavigation {
         console.dir(this);
     }
     _setup() {
-        this.isClosed = false;
-        this.touchingNavigation = false;
-        this.touchStartPositionX = 0;
-        this.touchAnimatePositionX = 0;
+        this.state = {
+            isClosed : false,
+            touchingNavigation : false
+        }
+        this.touch = {
+            startPositionX : 0,
+            animatePositionX : 0
+        }
     }
     _bindings() {
         this.navigationContainer.addEventListener('touchstart', this._initiateTouch);
@@ -26,26 +30,25 @@ class sideNavigation {
     }
 
     _initiateTouch(event) {
-        if(this.isClosed) return;
+        if(this.state.isClosed) return;
 
-        this.touchingNavigation = true;
-        this.touchStartPositionX = event.touches[0].pageX;
+        this.state.touchingNavigation = true;
+        this.touch.startPositionX = event.touches[0].pageX;
     }
     _trackTouch(event) {
-        if(!this.touchingNavigation) return;
+        if(!this.state.touchingNavigation) return;
 
-        requestAnimationFrame();
-        this.touchAnimatePositionX = event.touches[0].pageX;
-        const animateX = this.touchAnimatePositionX - this.touchStartPositionX;
+        this.touch.animatePositionX = event.touches[0].pageX;
+        const animateX = this.touch.animatePositionX - this.touch.startPositionX;
         this.navigationContainer.style.transform = `translate ${animateX}`;
     }
     _endTouch(event) {
         const toggleLimit = 60;
 
-        if(!this.touchingNavigation) return;
+        if(!this.state.touchingNavigation) return;
 
-        this.touchingNavigation = false;
-        let dragDirection = Math.min(0, this.touchStartPositionX - this.touchAnimatePositionX);
+        this.state.touchingNavigation = false;
+        let dragDirection = Math.min(0, this.touch.startPositionX - this.touch.animatePositionX);
 
         if(dragDirection < toggleLimit) {
             this.hideNavigation();
@@ -53,19 +56,22 @@ class sideNavigation {
     }
 
     hideNavigation() {
-        this.isClosed = true;
+        this.state.isClosed = true;
         this.propagateState();
     }
     openNavigation () {
-        this.isClosed = false;
+        this.state.isClosed = false;
         this.propagateState();
     }
     propagateState() {
-        if(this.isClosed) {
+        if(this.state.isClosed) {
             this.navigationContainer.classList.add('navigation-closed');
         } else {
             this.navigationContainer.classList.remove('navigation-closed');
         }
+    }
+    timeout() {
+        this.lastInteraction = date.now();
     }
 }
 
