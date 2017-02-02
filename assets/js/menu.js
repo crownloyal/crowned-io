@@ -6,7 +6,6 @@ class sideNavigation {
         this._setup();
         this._functionBindings();
         this._bindings();
-        console.dir(this);
     }
     _setup() {
         this.state = {
@@ -15,7 +14,20 @@ class sideNavigation {
         }
         this.touch = {
             startPositionX : 0,
-            animatePositionX : 0
+            animatePositionX : 0,
+            swipeLimit : 90,
+            distanceX : () => { 
+                return this.touch.animatePositionX - this.touch.startPositionX;
+            },
+            dragDirection : () => {
+                if (this.touch.startPositionX > this.touch.animatePositionX) {
+                    return "left";
+                } else {
+                    return "right";
+                } 
+            },
+
+            timer : 0
         }
     }
     _bindings() {
@@ -39,20 +51,20 @@ class sideNavigation {
         if(!this.state.touchingNavigation) return;
 
         this.touch.animatePositionX = event.touches[0].pageX;
-        const animateX = this.touch.animatePositionX - this.touch.startPositionX;
-        this.navigationContainer.style.transform = `translate ${animateX}`;
+        this.navigationContainer.style.transform = 'translateX(' + this.touch.distanceX + 'px)';
     }
     _endTouch(event) {
-        const toggleLimit = 60;
+        if(!this.state.touchingNavigation) { return; }
 
-        if(!this.state.touchingNavigation) return;
-
-        this.state.touchingNavigation = false;
-        let dragDirection = Math.min(0, this.touch.startPositionX - this.touch.animatePositionX);
-
-        if(dragDirection < toggleLimit) {
+        console.dir(this);
+        if(this.touch.dragDirection === "left" && this.touch.swipeLimit < this.touch.distanceX) {
             this.hideNavigation();
+        } else {
+            this.resetNavigation();
         }
+        // reset touch timer & touch state
+        this.state.touchingNavigation = false;
+        this.touch.timer = 0;
     }
 
     hideNavigation() {
@@ -62,6 +74,10 @@ class sideNavigation {
     openNavigation () {
         this.state.isClosed = false;
         this.propagateState();
+    }
+    resetNavigation() {
+        this.openNavigation();
+        this.navigationContainer.style.transform = 'translateX(0%)';
     }
     propagateState() {
         if(this.state.isClosed) {
