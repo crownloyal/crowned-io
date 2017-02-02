@@ -10,12 +10,13 @@ class sideNavigation {
     _setup() {
         this.state = {
             isClosed : false,
-            touchingNavigation : false
+            touchingNavigation : false,
+            lastInteraction : 0
         }
         this.touch = {
             startPositionX : 0,
             animatePositionX : 0,
-            swipeLimit : 90,
+            swipeLimit : -80,
             distanceX : () => { 
                 return this.touch.animatePositionX - this.touch.startPositionX;
             },
@@ -48,7 +49,7 @@ class sideNavigation {
         this.touch.startPositionX = event.touches[0].pageX;
     }
     _trackTouch(event) {
-        if(!this.state.touchingNavigation) return;
+        if(!this.state.touchingNavigation || this.touch.dragDirection() === 'right') return;
 
         this.touch.animatePositionX = event.touches[0].pageX;
         this.navigationContainer.style.transform = 'translateX(' + this.touch.distanceX() + 'px)';
@@ -56,7 +57,6 @@ class sideNavigation {
     _endTouch(event) {
         if(!this.state.touchingNavigation) { return; }
 
-        console.dir(this);
         if(this.touch.dragDirection() === 'left' && this.touch.swipeLimit > this.touch.distanceX()) {
             this.hideNavigation();
         } else {
@@ -65,6 +65,8 @@ class sideNavigation {
         // reset touch timer & touch state
         this.state.touchingNavigation = false;
         this.touch.timer = 0;
+
+        this.timeout();
     }
 
     hideNavigation() {
@@ -87,7 +89,7 @@ class sideNavigation {
         }
     }
     timeout() {
-        this.lastInteraction = date.now();
+        this.state.lastInteraction = new Date();
     }
 }
 

@@ -115,8 +115,8 @@ aside.side-navigation .nav-title {
 aside.side-navigation {
     width: 90%;
     max-width: 300px;
-        transition: translateX 0.2s ease-in-out;
-        transition: opacity 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
 }
 section.content.page-content {
     margin-left: 360px;
