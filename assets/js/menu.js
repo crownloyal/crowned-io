@@ -51,13 +51,13 @@ class sideNavigation {
         if(!this.state.touchingNavigation) return;
 
         this.touch.animatePositionX = event.touches[0].pageX;
-        this.navigationContainer.style.transform = 'translateX(' + this.touch.distanceX + 'px)';
+        this.navigationContainer.style.transform = 'translateX(' + this.touch.distanceX() + 'px)';
     }
     _endTouch(event) {
         if(!this.state.touchingNavigation) { return; }
 
         console.dir(this);
-        if(this.touch.dragDirection === "left" && this.touch.swipeLimit < this.touch.distanceX) {
+        if(this.touch.dragDirection() === 'left' && this.touch.swipeLimit < this.touch.distanceX()) {
             this.hideNavigation();
         } else {
             this.resetNavigation();
