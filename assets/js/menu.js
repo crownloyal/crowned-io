@@ -57,7 +57,7 @@ class sideNavigation {
         if(!this.state.touchingNavigation) { return; }
 
         console.dir(this);
-        if(this.touch.dragDirection() === 'left' && this.touch.swipeLimit < this.touch.distanceX()) {
+        if(this.touch.dragDirection() === 'left' && this.touch.swipeLimit > this.touch.distanceX()) {
             this.hideNavigation();
         } else {
             this.resetNavigation();
