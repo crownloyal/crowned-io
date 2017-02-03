@@ -54,6 +54,7 @@ class sideNavigation {
         if(!this.state.touchingNavigation || this.touch.dragDirection() === 'right') return;
 
         this.navigationContainer.style.transform = 'translateX(' + this.touch.distanceX() + 'px)';
+        this.navigationContainer.style.opacity = 1 + this.touch.distanceX()*0.01;
     }
     _endTouch(event) {
         if(!this.state.touchingNavigation) { return; }
@@ -81,6 +82,7 @@ class sideNavigation {
     resetNavigation() {
         this.openNavigation();
         this.navigationContainer.style.transform = 'translateX(0%)';
+        this.navigationContainer.style.opacity = 1;
     }
     propagateState() {
         if(this.state.isClosed) {
