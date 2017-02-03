@@ -73,6 +73,7 @@ class sideNavigation {
     hideNavigation() {
         this.state.isClosed = true;
         this.navigationContainer.style.opacity = 0;
+        this.navigationContainer.style.transform = 'translateX(-102%)';
         this.propagateState();
     }
     openNavigation () {
