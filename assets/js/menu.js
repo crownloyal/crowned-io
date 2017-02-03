@@ -16,7 +16,7 @@ class sideNavigation {
         this.touch = {
             startPositionX : 0,
             animatePositionX : 0,
-            swipeLimit : -80,
+            swipeLimit : -60,
             distanceX : () => { 
                 return this.touch.animatePositionX - this.touch.startPositionX;
             },
