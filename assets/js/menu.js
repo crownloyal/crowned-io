@@ -49,9 +49,10 @@ class sideNavigation {
         this.touch.startPositionX = event.touches[0].pageX;
     }
     _trackTouch(event) {
+        this.touch.animatePositionX = event.touches[0].pageX;
+
         if(!this.state.touchingNavigation || this.touch.dragDirection() === 'right') return;
 
-        this.touch.animatePositionX = event.touches[0].pageX;
         this.navigationContainer.style.transform = 'translateX(' + this.touch.distanceX() + 'px)';
     }
     _endTouch(event) {
