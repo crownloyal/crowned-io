@@ -67,12 +67,12 @@ class sideNavigation {
         // reset touch timer & touch state
         this.state.touchingNavigation = false;
         this.touch.timer = 0;
-
         this.timeout();
     }
 
     hideNavigation() {
         this.state.isClosed = true;
+        this.navigationContainer.style.opacity = 0;
         this.propagateState();
     }
     openNavigation () {
