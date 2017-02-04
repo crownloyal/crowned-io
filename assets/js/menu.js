@@ -94,6 +94,9 @@ class sideNavigation {
     }
     timeout() {
         this.state.lastInteraction = new Date();
+        setTimeout(() => {
+            this.resetNavigation();
+        }, 30000)
     }
 }
 
