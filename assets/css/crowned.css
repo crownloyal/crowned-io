@@ -17,15 +17,21 @@ html, body {
 
 /* Side nav */
 #menu-toggle {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 4;
+    visibility: hidden;
+}
+@media(max-width: 680px) {
+    #menu-toggle {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 4;
 
-    padding: 3vh;
-    padding: 3vh;
-    color: #66d9e8;
-    font-size: 1.2em;
+        padding: 3vh;
+        padding: 3vh;
+        color: #66d9e8;
+        font-size: 1.2em;
+        visibility: visible;
+    }
 }
 
 aside.side-navigation::before {
