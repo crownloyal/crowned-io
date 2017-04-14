@@ -2,12 +2,12 @@
  * BLACK: #313131
  * CYAN: #66d9e8
  * DARK BLUE: #0FA0CE
- * 
+ *
  * CDN
- * 
+ *
  * @import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css');
  * @import url('https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css');
- * 
+ *
  */
 
 html, body {
@@ -16,6 +16,18 @@ html, body {
 }
 
 /* Side nav */
+#menu-toggle {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 4;
+
+    padding: 3vh;
+    padding: 3vh;
+    color: #66d9e8;
+    font-size: 1.2em;
+}
+
 aside.side-navigation::before {
     content: ' ';
     position: absolute;
@@ -40,7 +52,6 @@ aside.side-navigation {
 
     box-shadow: 0 3px 5px 5px rgba(0, 0, 0, 0.2);
 }
-
 
 
 aside .nav-title {
@@ -68,7 +79,7 @@ aside nav > ul li {
 .content {
     height: 100%;
     width: calc(100%-21%);
-    padding: 2em 1em;
+    padding: 0 5vh;
     padding-top: 25vh;
 
     position: absolute;
@@ -97,7 +108,7 @@ a:hover {
     color: #66d9e8;
     text-decoration: underline;
     transition: color 0.3s ease-in-out;
-} 
+}
 .social-media a {
     color: #FFF;
     transition: color 0.3s ease-in-out;
@@ -115,35 +126,13 @@ aside.side-navigation .nav-title {
 aside.side-navigation {
     width: 90%;
     max-width: 300px;
-    transition: transform 0.2s ease-in-out;
-    transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.05s ease-out, transform 0.05s ease-out;
 }
 section.content.page-content {
     margin-left: 360px;
     width: 100%;
 }
 @media(max-width: 680px) {
-    aside.side-navigation {
-        transform: translateX(0);
-    }
-    aside.side-navigation + .content.page-content {
-        opacity: 0;
-    }
-
-    aside.side-navigation.navigation-closed {
-        transform: translateX(-102%);
-        opacity: 0;
-    }
-    aside.side-navigation.navigation-closed > .content.page-content {
-        opacity: 1;
-    }
-
-    section.content.page-content {
-        margin-left: 0;
-        width: 100%;
-    }
-}
-@media(max-width: 420px) {
     aside.side-navigation {
         transform: translateX(0);
     }
@@ -162,6 +151,13 @@ section.content.page-content {
     section.content.page-content {
         margin-left: 0;
         width: 100%;
+    }
+}
+@media(max-width: 420px) {
+
+    aside.side-navigation {
+        padding: 1em;
+        transform: translateX(0);
     }
 }
 

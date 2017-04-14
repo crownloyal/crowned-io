@@ -1,45 +1,62 @@
-class sideNavigation {
+'use strict';
 
-    constructor() {
-        this.navigationContainer = document.querySelector('aside.side-navigation');
+class sideNavigation {
+    constructor(options) {
+
+        if(! options.navigation || options.toggleButton) {
+            new Error("Please define navigation and toggle button in an options object.")
+        }
+        options.position = (typeof options.position !== 'left' || 'right') ? 'left' : undefined;
+        options.closed = (typeof options.closed !== true || false ) ? false : undefined;
+
+        this.settings = {
+            navigationContainer : document.querySelector(options.navigation),
+            toggleButton : document.querySelector(options.toggleButton),
+            closed: options.closed,
+            position : options.position
+        }
 
         this._setup();
         this._functionBindings();
         this._bindings();
+
+        this._propagateState();
     }
     _setup() {
         this.state = {
-            isClosed : false,
+            isClosed : this.settings.closed,
             touchingNavigation : false,
             lastInteraction : 0
         }
         this.touch = {
             startPositionX : 0,
             animatePositionX : 0,
-            swipeLimit : -60,
-            distanceX : () => { 
+            swipeLimit : 75,
+            distanceX : () => {
                 return this.touch.animatePositionX - this.touch.startPositionX;
             },
             dragDirection : () => {
                 if (this.touch.startPositionX > this.touch.animatePositionX) {
                     return "left";
-                } else {
+                } else {
                     return "right";
-                } 
+                }
             },
 
             timer : 0
         }
     }
     _bindings() {
-        this.navigationContainer.addEventListener('touchstart', this._initiateTouch);
-        this.navigationContainer.addEventListener('touchmove', this._trackTouch);
-        this.navigationContainer.addEventListener('touchend', this._endTouch);
+        this.settings.navigationContainer.addEventListener('touchstart', this._initiateTouch);
+        this.settings.navigationContainer.addEventListener('touchmove', this._trackTouch);
+        this.settings.navigationContainer.addEventListener('touchend', this._endTouch);
+        this.settings.toggleButton.addEventListener('click', this.toggleNavigation)
     }
     _functionBindings() {
         this._initiateTouch = this._initiateTouch.bind(this);
         this._trackTouch = this._trackTouch.bind(this);
         this._endTouch = this._endTouch.bind(this);
+        this.toggleNavigation = this.toggleNavigation.bind(this);
     }
 
     _initiateTouch(event) {
@@ -51,53 +68,55 @@ class sideNavigation {
     _trackTouch(event) {
         this.touch.animatePositionX = event.touches[0].pageX;
 
-        if(!this.state.touchingNavigation || this.touch.dragDirection() === 'right') return;
+        if(! this.state.touchingNavigation || this.touch.dragDirection() !== this.settings.position) return;
 
-        this.navigationContainer.style.transform = 'translateX(' + this.touch.distanceX() + 'px)';
-        this.navigationContainer.style.opacity = 1 + this.touch.distanceX()*0.01;
+        this.settings.navigationContainer.style.transform = 'translateX(' + this.touch.distanceX() + 'px)';
+        this.settings.navigationContainer.style.opacity = 1 - Math.abs(this.touch.distanceX()) * 0.005;
     }
     _endTouch(event) {
         if(!this.state.touchingNavigation) { return; }
 
-        if(this.touch.dragDirection() === 'left' && this.touch.swipeLimit > this.touch.distanceX()) {
+        if(this.touch.dragDirection() === this.settings.position && this.touch.swipeLimit < Math.abs(this.touch.distanceX())) {
             this.hideNavigation();
         } else {
-            this.resetNavigation();
+            this.openNavigation();
         }
-        // reset touch timer & touch state
+
         this.state.touchingNavigation = false;
         this.touch.timer = 0;
-        this.timeout();
     }
-
+    toggleNavigation() {
+        if(this.state.isClosed) {
+            this.openNavigation();
+        } else {
+            this.hideNavigation();
+        }
+    }
     hideNavigation() {
         this.state.isClosed = true;
-        this.navigationContainer.style.opacity = 0;
-        this.navigationContainer.style.transform = 'translateX(-102%)';
-        this.propagateState();
+        this._propagateState();
+        this.resetStyle();
     }
     openNavigation () {
         this.state.isClosed = false;
-        this.propagateState();
+        this._propagateState();
+        this.resetStyle();
     }
-    resetNavigation() {
-        this.openNavigation();
-        this.navigationContainer.style.transform = 'translateX(0%)';
-        this.navigationContainer.style.opacity = 1;
+    resetStyle() {
+        this.settings.navigationContainer.style.transform = "";
+        this.settings.navigationContainer.style.opacity = "";
     }
-    propagateState() {
+    _propagateState() {
         if(this.state.isClosed) {
-            this.navigationContainer.classList.add('navigation-closed');
+            this.settings.navigationContainer.classList.add('navigation-closed');
         } else {
-            this.navigationContainer.classList.remove('navigation-closed');
+            this.settings.navigationContainer.classList.remove('navigation-closed');
         }
-    }
-    timeout() {
-        this.state.lastInteraction = new Date();
-        setTimeout(() => {
-            this.resetNavigation();
-        }, 30000)
     }
 }
 
-let sidenav = new sideNavigation();
+let sidenav = new sideNavigation({
+    navigation: 'aside.side-navigation',
+    toggleButton: '#menu-toggle',
+    closed: false
+});
