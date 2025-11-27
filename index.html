@@ -1,69 +1,280 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
-        <title>crowned.io</title>
+        <title>Dominic Brause — Enterprise Integration Consultant</title>
+        <meta charset="UTF-8">
         <meta name="author" content="Dominic M Brause">
-        <meta name="description" content="Nice to hear, that you wish to get to know me.">
+        <meta name="description" content="Enterprise Integration Consultant with expertise in distributed systems, technical leadership, and scaling global operations. Based in Ireland, made in Germany.">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
-
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap" rel="stylesheet">
+        
         <link rel="stylesheet" href="./assets/bower_components/normalize-css/normalize.css">
-        <link rel="stylesheet" href="./assets/bower_components/skeleton-framework/dist/skeleton.min.css">
         <link rel="stylesheet" href="./assets/bower_components/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="./assets/css/crowned.css">
     </head>
     <body>
-        <div id="background-particlesjs"></div>
-
-        <div class="row content-wrapper">
-            <div id="menu-toggle">&#9776;</div>
-            <aside class="side-navigation column">
-                <div class="nav-title">
-                    <img src="./assets/img/profile.jpg" id="linkedin-profile">
-                    <h5>crowned.io</h5>
+        <!-- Header -->
+        <header class="site-header">
+            <div class="container">
+                <div class="header-rule"></div>
+                <div class="masthead">
+                    <h1 class="site-title">Dominic Brause</h1>
+                    <span class="tagline">Enterprise Integration · Distributed Systems · Technical Leadership</span>
                 </div>
-                <hr>
-                <div id="about-me">
-                    <p>Logic gets you from A to B. Imagination will get you everywhere.</p>
+                <div class="header-rule"></div>
+                <nav class="main-nav">
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#expertise" class="nav-link">Expertise</a>
+                    <a href="#stack" class="nav-link">Tech Stack</a>
+                    <a href="#experience" class="nav-link">Experience</a>
+                    <a href="#initiatives" class="nav-link">Initiatives</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </nav>
+            </div>
+        </header>
 
-                    <p><b>Dominic M Brause</b></p>
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                
+                <!-- Hero Section -->
+                <section id="about" class="section hero-section">
+                    <div class="two-column">
+                        <div class="column-main">
+                            <article class="lead-article">
+                                <h2 class="article-headline">Engineering Solutions at Scale</h2>
+                                <p class="article-lead">
+                                    Enterprise integration consultant with expertise in distributed systems, 
+                                    time-critical error tracing, and technical team leadership.
+                                </p>
+                                <p>
+                                    With over a decade of experience across Google, Dell EMC, OpenText, and LinkedIn, 
+                                    I've built a proven track record in scaling technical operations, optimizing system 
+                                    reliability, and driving impactful solutions across global markets.
+                                </p>
+                                <p>
+                                    Currently leading the DACH region—LinkedIn's highest volume EMEA market—where I 
+                                    architect integration solutions and guide a specialist team focused on data protection, 
+                                    privacy compliance, and enterprise efficiency. My individual contribution directly 
+                                    impacts $50M+ in annual revenue.
+                                </p>
+                                <p>
+                                    I thrive at the intersection of technical depth and business impact—whether debugging 
+                                    complex distributed systems, designing scalable ETL pipelines, or consulting C-level 
+                                    stakeholders on technical strategy.
+                                </p>
+                            </article>
+                        </div>
+                        <aside class="column-sidebar">
+                            <div class="profile-card">
+                                <img src="./assets/img/profile.jpg" alt="Dominic Brause" class="profile-image">
+                                <div class="profile-info">
+                                    <h3>Dominic M. Brause</h3>
+                                    <p class="location">Ireland · Made in Germany</p>
+                                </div>
+                            </div>
+                            <div class="quick-facts">
+                                <h4>At a Glance</h4>
+                                <ul>
+                                    <li><strong>Focus:</strong> Enterprise Integration</li>
+                                    <li><strong>Cloud:</strong> AWS, Firebase, Docker</li>
+                                    <li><strong>Languages:</strong> EN · DE · FR</li>
+                                    <li><strong>Education:</strong> B.Sc. Software Dev</li>
+                                </ul>
+                            </div>
+                        </aside>
+                    </div>
+                </section>
 
-                    <p>Engineer<br>
-                       Stargazer<br>
-                       & Adventurer</p>
-                </div>
-            </aside>
+                <div class="section-divider"></div>
 
-            <section class="content columns page-content">
-                <h3 id="be-friendly">Hello there!</h3>
+                <!-- Expertise Section -->
+                <section id="expertise" class="section">
+                    <h2 class="section-headline">Areas of Expertise</h2>
+                    <div class="expertise-grid">
+                        <article class="expertise-card">
+                            <h3>Enterprise Integration & Distributed Systems</h3>
+                            <p>End-to-end integration solutions for enterprise clients. Time-critical debugging 
+                               in high-throughput environments—including real-time bidding systems processing 
+                               billions of daily transactions.</p>
+                        </article>
+                        <article class="expertise-card">
+                            <h3>Software Engineering</h3>
+                            <p>Full-stack development with JavaScript, TypeScript, and Python. Building automation 
+                               tools, APIs, and scalable applications. Test-driven development with Jest, pytest, and JUnit.</p>
+                        </article>
+                        <article class="expertise-card">
+                            <h3>Data Engineering</h3>
+                            <p>Scalable ETL pipelines, BI dashboards, and analytics. SQL optimization, 
+                               data hygiene protocols, and performance tuning (30% processing time reduction).</p>
+                        </article>
+                        <article class="expertise-card">
+                            <h3>Technical Leadership</h3>
+                            <p>Scaled EMEA team from 3 to 10 engineers. Hiring, training, mentorship, 
+                               and driving technical excellence across global markets.</p>
+                        </article>
+                    </div>
+                </section>
 
-                <p>My name is Dominic.</p>
-                <p>I am a Technical Consultant for the LinkedIn Learning platform.<br>
-                   I help developers integrate and improve their very own in-house learning platform.</p>
+                <div class="section-divider"></div>
 
-                <p>If you want to work with me, just let me know!</p>
+                <!-- Tech Stack Section -->
+                <section id="stack" class="section">
+                    <h2 class="section-headline">Technical Stack</h2>
+                    <div class="stack-grid">
+                        <div class="stack-category">
+                            <h4>Languages</h4>
+                            <p>JavaScript, TypeScript, Python, Java, SQL, Bash, C</p>
+                        </div>
+                        <div class="stack-category">
+                            <h4>Web & Frameworks</h4>
+                            <p>HTML, CSS, Angular, Ember.js, Node.js</p>
+                        </div>
+                        <div class="stack-category">
+                            <h4>Cloud & DevOps</h4>
+                            <p>AWS, Docker, Kubernetes, VMware vCloud, Tomcat, IIS</p>
+                        </div>
+                        <div class="stack-category">
+                            <h4>Databases</h4>
+                            <p>PostgreSQL, Trino, MongoDB, SQLite, MS SQL Server</p>
+                        </div>
+                        <div class="stack-category">
+                            <h4>Testing & CI</h4>
+                            <p>Jest, JUnit, pytest, Flake8, GitHub Actions, TravisCI</p>
+                        </div>
+                        <div class="stack-category">
+                            <h4>Tools</h4>
+                            <p>Git, Atlassian Suite, Salesforce, Adobe Creative Suite</p>
+                        </div>
+                    </div>
+                </section>
 
-                <div class="social-media">
-                    <div class="media-icon">
-                        <a href="https://github.com/crownloyal/" target="_blank" rel="noopener">
-                        <i class="fa fa-github" aria-hidden="true"></i>
+                <div class="section-divider"></div>
+
+                <!-- Experience Section -->
+                <section id="experience" class="section">
+                    <h2 class="section-headline">Professional Journey</h2>
+                    <div class="timeline">
+                        <article class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-date">2022 — Present</span>
+                                <h3>Senior Technical Consultant</h3>
+                                <p class="company">LinkedIn · Dublin, Ireland</p>
+                                <p>Leading DACH region technical solutions—LinkedIn's highest volume EMEA market. 
+                                   Primary technical interface for C-level stakeholders, impacting $50M+ annual revenue. 
+                                   Scaled team from 3 to 10 engineers. Pioneered customer health checks, custom report builders, 
+                                   and privacy-compliant solutions for GDPR-sensitive markets.</p>
+                            </div>
+                        </article>
+                        <article class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-date">2019 — 2022</span>
+                                <h3>Technical Consultant</h3>
+                                <p class="company">LinkedIn · Dublin, Ireland</p>
+                                <p>Led end-to-end implementation of enterprise integration solutions. 
+                                   Built automation tools with Python, SQL, Java, and JavaScript. 
+                                   Developed sales excellence toolkits and expanded global partner portfolio.</p>
+                            </div>
+                        </article>
+                        <article class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-date">2018 — 2019</span>
+                                <h3>Senior Support Engineer L3</h3>
+                                <p class="company">OpenText · Cork, Ireland</p>
+                                <p>Java application debugging in agile environments. Built BI dashboards, 
+                                   engineered ETL pipelines (30% faster processing), and optimized SQL queries 
+                                   (25% faster reports). EMEA escalation point for priority SLA tickets.</p>
+                            </div>
+                        </article>
+                        <article class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-date">2014 — 2018</span>
+                                <h3>Support Engineer</h3>
+                                <p class="company">Dell EMC · Cork, Ireland</p>
+                                <p>Hardware storage and RAID engineering. High-throughput local network optimization 
+                                   for enterprise storage solutions.</p>
+                            </div>
+                        </article>
+                        <article class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-date">2013 — 2014</span>
+                                <h3>Support Engineer</h3>
+                                <p class="company">DoubleClick by Google · Cork, Ireland</p>
+                                <p>Maintained real-time bidding systems for YouTube ads—processing billions of 
+                                   daily transactions. Resolved transaction anomalies and collaborated with engineering 
+                                   on configuration improvements.</p>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <div class="section-divider"></div>
+
+                <!-- Initiatives Section -->
+                <section id="initiatives" class="section">
+                    <h2 class="section-headline">Initiatives & Community</h2>
+                    <div class="initiatives-grid">
+                        <article class="initiative-card">
+                            <span class="initiative-type">At LinkedIn</span>
+                            <h3>Professional Services Tooling</h3>
+                            <p>Pioneered customer health checks, custom report builders, and user anonymisation tools. 
+                               Built debugging and analytics utilities shared across the organization.</p>
+                        </article>
+                        <article class="initiative-card">
+                            <span class="initiative-type">Community</span>
+                            <h3>CoderDojo Mentor</h3>
+                            <p>Programming mentor at EMC CoderDojo Cork (2016), helping young people learn to code 
+                               in a fun, creative environment.</p>
+                        </article>
+                        <article class="initiative-card">
+                            <span class="initiative-type">Founder</span>
+                            <h3>AEROmovement e.V.</h3>
+                            <p>Founded a sports initiative (2011–2015) bringing parkour and calisthenics to university 
+                               sports centres across central Germany.</p>
+                        </article>
+                    </div>
+                </section>
+
+                <div class="section-divider"></div>
+
+                <!-- Contact Section -->
+                <section id="contact" class="section contact-section">
+                    <h2 class="section-headline">Let's Connect</h2>
+                    <p class="contact-intro">
+                        Interested in discussing architecture challenges, exploring collaboration opportunities, 
+                        or simply exchanging ideas? I'd love to hear from you.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/dominic-brause/" target="_blank" rel="noopener" class="social-link">
+                            <i class="fa fa-linkedin" aria-hidden="true"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://github.com/crownloyal/" target="_blank" rel="noopener" class="social-link">
+                            <i class="fa fa-github" aria-hidden="true"></i>
+                            <span>GitHub</span>
                         </a>
                     </div>
-                    <div class="media-icon">
-                        <a href="https://instagram.com/crownandjewels/" target="_blank" rel="noopener">
-                        <i class="fa fa-instagram" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                    <div class="media-icon">
-                        <a href="https://www.linkedin.com/in/dominic-brause/" target="_blank" rel="noopener">
-                        <i class="fa fa-linkedin" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </div>
-            </section>
+                </section>
 
-        </div>
-    <script src="./assets/bower_components/particles.js/particles.min.js"></script>
+            </div>
+        </main>
 
-    <script type="text/ecmascript" src="./assets/js/app.js"></script>
-    <script type="text/ecmascript" src="./assets/js/menu.js"></script>
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="container">
+                <div class="footer-rule"></div>
+                <p>&copy; 2025 Dominic Brause. Crafted with care.</p>
+            </div>
+        </footer>
+
+        <script type="text/javascript" src="./assets/js/app.js"></script>
     </body>
 </html>
